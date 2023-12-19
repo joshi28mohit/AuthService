@@ -5,6 +5,8 @@ const app = express();
 const apiRoutes = require('./routes/index');
 
 // const UserRepository = require('./repository/user-repository');
+// const UserService = require('./services/user-service');
+// const verify = require('jsonwebtoken/verify');
 
 
 const prepareAndStratServer = () => {
@@ -14,9 +16,13 @@ const prepareAndStratServer = () => {
 
     app.listen(PORT, async () => {
         console.log(`Server Started at port: ${PORT}`);
-        // const userRepository = new UserRepository();
-        // const result = await userRepository.getById(1);
-        // console.log(result);
+        
+        // const service = new UserService();
+        // const newToken = service.createToken({email: 'panksj@admin.com', id: '1'});
+        // console.log("new Token is", newToken);
+        // const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBhbmtzakBhZG1pbi5jb20iLCJpZCI6IjEiLCJpYXQiOjE3MDI5ODUwOTUsImV4cCI6MTcwMjk4NTA5NX0.JTB87xTGCk4EJrtkhSwB192XY3EhtjeDTbm_S0o0Nuk';
+        // const response = service.verifyToken(token);
+        // console.log(response);
     });
 }
 
