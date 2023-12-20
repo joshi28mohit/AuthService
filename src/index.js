@@ -4,6 +4,8 @@ const { PORT } = require('./config/serverConfig');
 const app = express();
 const apiRoutes = require('./routes/index');
 
+const db = require('./models/index');
+
 // const UserRepository = require('./repository/user-repository');
 // const UserService = require('./services/user-service');
 // const verify = require('jsonwebtoken/verify');
@@ -16,7 +18,10 @@ const prepareAndStratServer = () => {
 
     app.listen(PORT, async () => {
         console.log(`Server Started at port: ${PORT}`);
-        
+        if(process.env.DB_SYNC){
+            db.sequelize.sync({alter: true});
+        }
+
         // const service = new UserService();
         // const newToken = service.createToken({email: 'panksj@admin.com', id: '1'});
         // console.log("new Token is", newToken);
