@@ -8,8 +8,9 @@ const db = require('./models/index');
 
 const prepareAndStratServer = () => {
     app.use(bodyParser.json());
-    app.use('/api', apiRoutes);
     app.use(bodyParser.urlencoded({extended: true}));   
+    
+    app.use('/api', apiRoutes);
 
     app.listen(PORT, async () => {
         console.log(`Server Started at port: ${PORT}`);
