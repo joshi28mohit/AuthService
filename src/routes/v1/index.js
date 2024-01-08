@@ -5,6 +5,9 @@ const UserService = require('../../services/user-service');
 const {AuthRequestValidators} = require('../../middlewares/index');
 const router = express.Router();
 
+router.get(
+    '/get/:id', UserController.get
+);
 router.post(
     '/signup',
     AuthRequestValidators.validateUserAuth,

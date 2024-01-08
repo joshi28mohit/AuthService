@@ -8,6 +8,15 @@ class UserService{
         this.userRepository = new UserRepository();
     }
 
+    async get(UserId){
+        try {
+            const response = await this.userRepository.getById(UserId);
+            return response
+        } catch (error) {
+            throw error;
+        }
+    }
+
     async create(data){
         try {
             const user = await this.userRepository.create(data);

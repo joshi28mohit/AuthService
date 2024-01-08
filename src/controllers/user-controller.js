@@ -44,6 +44,26 @@ const destroy = async (req,res) => {
     }
 }
 
+const get = async (req, res) => {
+    try {
+        const response = await userService.get(req.params.id);
+        return res.status(201).json({
+            message: 'Successfully fetched the user',
+            data: response,
+            success: true,
+            err: {}
+        })
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            message: 'Something went wrong',
+            data: {},
+            success: false,
+            err: error
+        })
+    }
+}
+
 const signIn = async (req, res) => {
     try {
         const response = await userService.signIn(req.body.email, req.body.password);
@@ -110,5 +130,6 @@ module.exports = {
     destroy,
     signIn,
     isAuthenticated,
-    isAdmin
+    isAdmin,
+    get
 }
